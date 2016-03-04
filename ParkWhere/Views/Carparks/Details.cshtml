@@ -1,0 +1,169 @@
+﻿@model ParkWhere.Models.Carpark
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Carpark</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.carparkNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.carparkNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.x_coord)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.x_coord)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.y_coord)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.y_coord)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.carparkType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.carparkType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.typeOfparking)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.typeOfparking)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.shortTermparking)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.shortTermparking)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.freeParking)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.freeParking)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nightParking)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nightParking)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.parkAndrideScheme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.parkAndrideScheme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adhocParking)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adhocParking)
+        </dd>
+
+    </dl>
+</div>
+
+    <head>
+            <script src="http://maps.googleapis.com/maps/api/js"></script>
+            <script>
+
+            function initialize() {
+
+                var mapProp = {
+                    center: new google.maps.LatLng(1.3000, 103.8000),
+                    zoom: 11,
+                    mapTypeId:google.maps.MapTypeId.ROADMAP
+                };
+
+                var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+                var carparkNo = "@Url.Content(Model.carparkNo)";
+                var address = "@Url.Content(Model.address)";
+                var carparkType = "@Url.Content(Model.carparkType)";
+                var parkingType = "@Url.Content(Model.typeOfparking)";
+                var shortTermparking = "@Url.Content(Model.shortTermparking)";
+                var nightParking = "@Url.Content(Model.nightParking)";
+
+                var contentString = '<div id="content">' +
+                    '<div id="siteNotice">' +
+                    '</div>' +
+                    '<h1 id="firstHeading" class="firstHeading">Carpark: ' + carparkNo + '</h1>' +
+                    '<div id="bodyContent">' +
+                    '<ul>' +
+                    '<li>Address: ' + address + '</li>' +
+                    '<li>Carpark Type: ' + carparkType + '</li>' +
+                    '<li>Type of Parking: ' + parkingType + '</li>' +
+                    '<li>Short Term Parking: ' + shortTermparking + '</li>' +
+                    '<li>Night Parking: ' + nightParking + '</li>' +
+                    '</ul>' +
+                    '<p>Click <a href="..">here</a> to bookmark carpark!</p>' +
+                    '</div>' +
+                    '</div>';
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(1.3504, 103.8488),
+                    //position: new google.maps.LatLng(lat, lng),
+                    title: "Junction 8 Carpark",
+                });
+
+                  marker.addListener('click', function () {
+                      infowindow.open(map, marker);
+            });
+
+            marker.setMap(map);
+            }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+            </script>
+        </head>
+
+        <body>
+            <div id="googleMap" style="width:500px;height:380px;"></div>
+        </body>
+
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.id }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>
