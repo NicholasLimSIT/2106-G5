@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ParkWhereDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Bookmark">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="carparkId" Type="Int32" />
+    <Property Name="date" Type="DateTime" Precision="7" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Carpark" Relationship="Self.FK__Bookmarks__carpa__3F466844" FromRole="Bookmarks" ToRole="Carparks" />
+  </EntityType>
+  <EntityType Name="Carpark">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="carparkNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="x_coord" Type="Double" Nullable="false" />
+    <Property Name="y_coord" Type="Double" Nullable="false" />
+    <Property Name="carparkType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="typeOfparking" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="shortTermparking" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="freeParking" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="nightParking" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="parkAndrideScheme" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="adhocParking" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Bookmarks" Relationship="Self.FK__Bookmarks__carpa__3F466844" FromRole="Carparks" ToRole="Bookmarks" />
+    <NavigationProperty Name="ParkingHistories" Relationship="Self.FK__ParkingHi__carpa__3E52440B" FromRole="Carparks" ToRole="ParkingHistory" />
+  </EntityType>
+  <EntityType Name="ParkingHistory">
+    <Key>
+      <PropertyRef Name="parkingHistoryId" />
+    </Key>
+    <Property Name="parkingHistoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="carparkId" Type="Int32" />
+    <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Carpark" Relationship="Self.FK__ParkingHi__carpa__3E52440B" FromRole="ParkingHistory" ToRole="Carparks" />
+  </EntityType>
+  <EntityType Name="PetrolStation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="petrolStationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK__Bookmarks__carpa__3F466844">
+    <End Role="Carparks" Type="Self.Carpark" Multiplicity="0..1" />
+    <End Role="Bookmarks" Type="Self.Bookmark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carparks">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Bookmarks">
+        <PropertyRef Name="carparkId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ParkingHi__carpa__3E52440B">
+    <End Role="Carparks" Type="Self.Carpark" Multiplicity="0..1" />
+    <End Role="ParkingHistory" Type="Self.ParkingHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carparks">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ParkingHistory">
+        <PropertyRef Name="carparkId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ParkWhereDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bookmarks" EntityType="Self.Bookmark" />
+    <EntitySet Name="Carparks" EntityType="Self.Carpark" />
+    <EntitySet Name="ParkingHistories" EntityType="Self.ParkingHistory" />
+    <EntitySet Name="PetrolStations" EntityType="Self.PetrolStation" />
+    <AssociationSet Name="FK__Bookmarks__carpa__3F466844" Association="Self.FK__Bookmarks__carpa__3F466844">
+      <End Role="Carparks" EntitySet="Carparks" />
+      <End Role="Bookmarks" EntitySet="Bookmarks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ParkingHi__carpa__3E52440B" Association="Self.FK__ParkingHi__carpa__3E52440B">
+      <End Role="Carparks" EntitySet="Carparks" />
+      <End Role="ParkingHistory" EntitySet="ParkingHistories" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

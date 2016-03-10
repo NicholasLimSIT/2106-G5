@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ParkWhereDBModelStoreContainer" CdmEntityContainer="ParkWhereDBEntities">
+    <EntitySetMapping Name="Bookmarks">
+      <EntityTypeMapping TypeName="ParkWhereDBModel.Bookmark">
+        <MappingFragment StoreEntitySet="Bookmarks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="carparkId" ColumnName="carparkId" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="username" ColumnName="username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carparks">
+      <EntityTypeMapping TypeName="ParkWhereDBModel.Carpark">
+        <MappingFragment StoreEntitySet="Carparks">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="carparkNo" ColumnName="carparkNo" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="x_coord" ColumnName="x_coord" />
+          <ScalarProperty Name="y_coord" ColumnName="y_coord" />
+          <ScalarProperty Name="carparkType" ColumnName="carparkType" />
+          <ScalarProperty Name="typeOfparking" ColumnName="typeOfparking" />
+          <ScalarProperty Name="shortTermparking" ColumnName="shortTermparking" />
+          <ScalarProperty Name="freeParking" ColumnName="freeParking" />
+          <ScalarProperty Name="nightParking" ColumnName="nightParking" />
+          <ScalarProperty Name="parkAndrideScheme" ColumnName="parkAndrideScheme" />
+          <ScalarProperty Name="adhocParking" ColumnName="adhocParking" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParkingHistories">
+      <EntityTypeMapping TypeName="ParkWhereDBModel.ParkingHistory">
+        <MappingFragment StoreEntitySet="ParkingHistory">
+          <ScalarProperty Name="parkingHistoryId" ColumnName="parkingHistoryId" />
+          <ScalarProperty Name="carparkId" ColumnName="carparkId" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PetrolStations">
+      <EntityTypeMapping TypeName="ParkWhereDBModel.PetrolStation">
+        <MappingFragment StoreEntitySet="PetrolStation">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="petrolStationName" ColumnName="petrolStationName" />
+          <ScalarProperty Name="address" ColumnName="address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

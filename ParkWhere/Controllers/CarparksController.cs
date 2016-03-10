@@ -13,7 +13,7 @@ namespace ParkWhere.Controllers
 {
     public class CarparksController : Controller
     {
-        private ParkWhereContext db = new ParkWhereContext();
+        private ParkWhereDBEntities db = new ParkWhereDBEntities();
         private CarparkGateway carparkGateway = new CarparkGateway();
         Carpark model = new Carpark();
         // GET: Carparks

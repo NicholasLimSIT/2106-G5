@@ -10,7 +10,7 @@ namespace ParkWhere.DAL
 {
     public class CarparkGateway : ICarparkGateway
     {
-        internal ParkWhereContext db = new ParkWhereContext();
+        internal ParkWhereDBEntities db = new ParkWhereDBEntities();
         internal DbSet<Carpark> data = null;
         IEnumerable<Carpark> model;
 

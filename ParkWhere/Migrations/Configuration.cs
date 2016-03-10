@@ -5,14 +5,14 @@ namespace ParkWhere.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ParkWhere.DAL.ParkWhereContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ParkWhere.DAL.ParkWhereDBEntities>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(ParkWhere.DAL.ParkWhereContext context)
+        protected override void Seed(ParkWhere.DAL.ParkWhereDBEntities context)
         {
             //  This method will be called after migrating to the latest version.
 
