@@ -6,48 +6,17 @@ using System.Net;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using ParkWhere.Services;
 
 namespace ParkWhere.Controllers
 {
     public class HomeController : Controller
     {
+        WeatherGateway weatherGateway = new WeatherGateway();
+
         public ActionResult Index()
         {
-            //These codes are to be split into another controller class
-            String url = "http://www.nea.gov.sg/api/WebAPI?dataset=nowcast&keyref=781CF461BB6606AD4AF8F309C0CCE994AC81FD9664F88220";
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            try
-            {
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                Stream receiveStream = response.GetResponseStream();
-                StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
-
-                String content;
-                using (readStream)
-                {
-                    content = readStream.ReadLine();
-                    //ViewBag.Quote = content;
-                }
-
-                string[] tokens = content.Split(new [] { '<' + "area name=" + '"', '"' + " forecast=" + '"', '"' + " icon=" + '"' }, StringSplitOptions.None);
-
-                //For testing 
-                string myArea = "YISHUN";
-                int i = 0;
-                while (!tokens[i].Equals(myArea))
-                {
-                    i++;
-                }
-                string weatherForecast = "My current location: " + tokens[i] + " | Forecast: " + tokens[i + 1];
-                ViewBag.Quote = weatherForecast;
-            }
-            catch (WebException we)
-            {
-                Stream receiveStream = we.Response.GetResponseStream();
-                StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
-                System.Diagnostics.Debug.WriteLine("Error Encountered - ");
-                System.Diagnostics.Debug.WriteLine(readStream.ReadToEnd());
-            }
+            ViewBag.Quote = weatherGateway.GetCurrentWeather("ANG MO KIO");
             return View();
         }
 

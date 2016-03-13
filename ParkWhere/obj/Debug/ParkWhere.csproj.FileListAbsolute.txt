@@ -412,3 +412,4 @@ C:\Users\Wei Jian\Source\Repos\2106-G5\ParkWhere\bin\Microsoft.Owin.Security.Mic
 C:\Users\Wei Jian\Source\Repos\2106-G5\ParkWhere\obj\Debug\ParkWhere.csprojResolveAssemblyReference.cache
 C:\Users\Wei Jian\Source\Repos\2106-G5\ParkWhere\obj\Debug\ParkWhere.dll
 C:\Users\Wei Jian\Source\Repos\2106-G5\ParkWhere\obj\Debug\ParkWhere.pdb
+C:\Users\Wei Jian\Source\Repos\2106-G5\ParkWhere\bin\Jmelosegui.Mvc.GoogleMap.dll
