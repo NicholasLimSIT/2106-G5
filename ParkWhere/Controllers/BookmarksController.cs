@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using ParkWhere.DAL;
+
 using ParkWhere.Models;
 
 namespace ParkWhere.Controllers
@@ -14,9 +14,6 @@ namespace ParkWhere.Controllers
     public class BookmarksController : GeneralController<Bookmark>
     {
         private ParkWhereDBEntities db = new ParkWhereDBEntities();
-
-
-
 
         // GET: Bookmarks/Create
         public ActionResult Create()

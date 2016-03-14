@@ -342,7 +342,6 @@ C:\Users\NicholasLim\Documents\Visual Studio 2015\Projects\ParkWhere\ParkWhere\b
 C:\Users\NicholasLim\Documents\Visual Studio 2015\Projects\ParkWhere\ParkWhere\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\NicholasLim\Documents\Visual Studio 2015\Projects\ParkWhere\ParkWhere\obj\Debug\ParkWhere.dll
 C:\Users\NicholasLim\Documents\Visual Studio 2015\Projects\ParkWhere\ParkWhere\obj\Debug\ParkWhere.pdb
-C:\Users\NicholasLim\Documents\Visual Studio 2015\Projects\ParkWhere\ParkWhere\obj\Debug\ParkWhere.csprojResolveAssemblyReference.cache
 C:\Users\Wei Jian\Source\Repos\2106-G5\ParkWhere\bin\roslyn\csc.exe
 C:\Users\Wei Jian\Source\Repos\2106-G5\ParkWhere\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\Wei Jian\Source\Repos\2106-G5\ParkWhere\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
