@@ -46,6 +46,8 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="petrolStationName" ColumnName="petrolStationName" />
           <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
