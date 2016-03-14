@@ -1,10 +1,15 @@
-﻿@{
+﻿@using Jmelosegui.Mvc.GoogleMap
+@{
     ViewBag.Title = "Home Page";
 }
 
 @Styles.Render("~/Content/css")
 
 
+@section scripts
+    {
+    @(Html.GoogleMap().ScriptRegistrar())
+}
 
 <div class="well" id="wellHomePage">
     <h2>Welcome to ParkWhere ! </h2>
@@ -12,6 +17,14 @@
 
     <p>@ViewBag.Quote</p>
     <br />
+
+    @(
+        Html.GoogleMap()
+            .Name("map")
+            .Height(500)
+            .Markers(m => m.Add().Title("Hello World!"))
+    )
+
     <br />
     <br />
     <br />

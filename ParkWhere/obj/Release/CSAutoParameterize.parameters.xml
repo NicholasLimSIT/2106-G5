@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="ParkWhereDBEntities-Web.config Connection String" description="ParkWhereDBEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.ParkWhereContext.csdl|res://*/Models.ParkWhereContext.ssdl|res://*/Models.ParkWhereContext.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=parkwhere.database.windows.net;initial catalog=ParkWhereDB;persist security info=True;user id=Group5;password=Parkwhere5;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Wei\ Jian\\Source\\Repos\\2106-G5\\ParkWhere\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ParkWhereDBEntities']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\NicholasLim\\Documents\\Visual\ Studio\ 2015\\Projects\\ParkWhere\\ParkWhere\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ParkWhereDBEntities']/@connectionString" />
   </parameter>
   <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="DefaultConnection_ConnectionString" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Wei\ Jian\\Source\\Repos\\2106-G5\\ParkWhere\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\NicholasLim\\Documents\\Visual\ Studio\ 2015\\Projects\\ParkWhere\\ParkWhere\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
   </parameter>
 </parameters>

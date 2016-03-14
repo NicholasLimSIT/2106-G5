@@ -175,12 +175,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BookmarksController.cs" />
     <Compile Include="Controllers\CarparksController.cs" />
+    <Compile Include="Controllers\GeneralController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ParkingHistoriesController.cs" />
+    <Compile Include="Controllers\PetrolStationsController.cs" />
+    <Compile Include="DAL\BookmarkGateway.cs" />
     <Compile Include="DAL\CarparkGateway.cs" />
-    <Compile Include="DAL\ICarparkGateway.cs" />
+    <Compile Include="DAL\DataGateway.cs" />
+    <Compile Include="DAL\IDataGateway.cs" />
+    <Compile Include="DAL\ParkingHistoryGateway.cs" />
     <Compile Include="DAL\ParkWhereContext.cs" />
+    <Compile Include="DAL\PetrolStationGateway.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -298,14 +306,25 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Carparks\Create.cshtml" />
-    <Content Include="Views\Carparks\Delete.cshtml" />
     <Content Include="Views\Carparks\Details.cshtml" />
-    <Content Include="Views\Carparks\Edit.cshtml" />
     <Content Include="Views\Carparks\Index.cshtml" />
+    <Content Include="Views\Bookmarks\Create.cshtml" />
+    <Content Include="Views\Bookmarks\Delete.cshtml" />
+    <Content Include="Views\Bookmarks\Details.cshtml" />
+    <Content Include="Views\Bookmarks\Edit.cshtml" />
+    <Content Include="Views\Bookmarks\Index.cshtml" />
+    <Content Include="Views\ParkingHistories\Create.cshtml" />
+    <Content Include="Views\ParkingHistories\Delete.cshtml" />
+    <Content Include="Views\ParkingHistories\Details.cshtml" />
+    <Content Include="Views\ParkingHistories\Edit.cshtml" />
+    <Content Include="Views\ParkingHistories\Index.cshtml" />
+    <Content Include="Views\PetrolStations\Details.cshtml" />
+    <Content Include="Views\PetrolStations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\General\" />
+    <Folder Include="Views\UserData\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Migrations\fonts\glyphicons-halflings-regular.woff" />
