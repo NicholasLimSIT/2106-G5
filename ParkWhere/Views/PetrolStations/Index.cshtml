@@ -1,10 +1,30 @@
 ﻿@model IEnumerable<ParkWhere.Models.PetrolStation>
-
+@using Jmelosegui.Mvc.GoogleMap
 @{
     ViewBag.Title = "Index";
 }
+@section scripts
+    {
+    @(Html.GoogleMap().ScriptRegistrar())
+}
+
 
 <h2>Index</h2>
+
+@(
+                Html.GoogleMap()
+                    .Name("map")
+                    .Height(500)
+                    .Center(c => c.UseCurrentPosition())
+                    .Zoom(12)
+                    
+
+
+    )
+
+
+
+
 
 <p>
     @Html.ActionLink("Create New", "Create")

@@ -1,4 +1,6 @@
-﻿using ParkWhere.DAL;
+﻿
+using Newtonsoft.Json;
+using ParkWhere.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,16 +8,27 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace ParkWhere.Controllers
 {
     public class GeneralController<T> : Controller where T : class
     {
+        
         internal IDataGateway<T> dataGateway;
+        internal GeneralController()
+        {
+            
+           
+        }
+        
+
+
         // GET: General
-        virtual public ActionResult Index(int? id)
+        public ActionResult Index(int? id)
         {
             return View(dataGateway.SelectAll());
         }
+      
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -29,5 +42,6 @@ namespace ParkWhere.Controllers
             }
             return View(obj);
         }
+
     }
 }

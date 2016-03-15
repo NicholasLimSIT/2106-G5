@@ -47,8 +47,8 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="petrolStationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="latitude" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="longitude" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="latitude" Type="Double" />
+    <Property Name="longitude" Type="Double" />
   </EntityType>
   <Association Name="FK__Bookmarks__carpa__49C3F6B7">
     <End Role="Carparks" Type="Self.Carpark" Multiplicity="0..1" />

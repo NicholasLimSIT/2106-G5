@@ -28,7 +28,7 @@ namespace ParkWhere.DAL
         
         public IEnumerable<Carpark> searchCarpark(string address)
         {
-            if (address.Equals(""))
+            if (address== null)
             {
                 model = data.SqlQuery("SELECT * From dbo.Carparks ").ToList();
                 return model;
@@ -39,7 +39,21 @@ namespace ParkWhere.DAL
                 model = data.SqlQuery("SELECT * From dbo.Carparks WHERE address LIKE '%" + str + "%'").ToList();
                 return model;
             }
-           
+        }
+        public IEnumerable<Carpark> FilterAddressByType(string address,string parkingTyperesult, string carparkTyperesult)
+        {
+            
+                string resultAddress = address.Substring(0, 5);
+                model = data.SqlQuery("SELECT * From dbo.Carparks WHERE address LIKE '%" + resultAddress + "%' AND typeOfparking = '"+parkingTyperesult+"' AND carparkType = '"+carparkTyperesult+"'").ToList();
+                return model;
+            
+        }
+        public IEnumerable<Carpark> FilterByType(string parkingTyperesult, string carparkTyperesult)
+        {
+
+            
+            model = data.SqlQuery("SELECT * From dbo.Carparks WHERE typeOfparking = '" + parkingTyperesult + "' AND carparkType = '" + carparkTyperesult + "'").ToList();
+            return model;
 
         }
     }

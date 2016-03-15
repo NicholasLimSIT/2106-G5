@@ -17,7 +17,7 @@ namespace ParkWhere.Models
         public int Id { get; set; }
         public string petrolStationName { get; set; }
         public string address { get; set; }
-        public Nullable<decimal> latitude { get; set; }
-        public Nullable<decimal> longitude { get; set; }
+        public Nullable<double> latitude { get; set; }
+        public Nullable<double> longitude { get; set; }
     }
 }
