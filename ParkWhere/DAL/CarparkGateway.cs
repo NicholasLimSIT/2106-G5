@@ -17,15 +17,7 @@ namespace ParkWhere.DAL
         {
             this.data = db.Set<Carpark>();
         }
-        
-
-        public void Save()
-        {
-            db.SaveChanges();
-        }
-
-
-        
+                
         public IEnumerable<Carpark> searchCarpark(string address)
         {
             if (address== null)
