@@ -18,7 +18,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a href="@Url.Action("Index", "Home", new { area = "" })">
-                    <img style="margin-top: -60px; margin-left: -40px;height: 40px" src="../img/pwlogo.PNG" />
+                    <img style="margin-top: -60px; margin-left: -40px;height: 40px" src="~/Content/images/pwlogo.png" />
                 </a>
 
                 <!-- @Html.ActionLink("ParkWhere", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })-->
@@ -33,10 +33,10 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                             Account <span class="caret"></span>
                         </a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Bookmarks", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Saved History", "Index", "History")</li>
-                        </ul>
+                        @*<ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Bookmarks", "Index", "Bookmarks")</li>
+                            <li>@Html.ActionLink("Saved History", "Index", "ParkingHistories")</li>
+                        </ul>*@
                     </li>
                 </ul>
                 @Html.Partial("_LoginPartial")

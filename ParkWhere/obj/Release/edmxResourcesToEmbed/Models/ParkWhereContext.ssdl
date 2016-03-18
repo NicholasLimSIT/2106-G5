@@ -43,8 +43,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="petrolStationName" Type="nvarchar" MaxLength="50" />
     <Property Name="address" Type="nvarchar" MaxLength="50" />
-    <Property Name="latitude" Type="decimal" Precision="18" Scale="0" />
-    <Property Name="longitude" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="latitude" Type="float" />
+    <Property Name="longitude" Type="float" />
   </EntityType>
   <Association Name="FK__Bookmarks__carpa__49C3F6B7">
     <End Role="Carparks" Type="Self.Carparks" Multiplicity="0..1" />

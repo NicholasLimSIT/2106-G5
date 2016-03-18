@@ -17,16 +17,38 @@
 
     <p>@ViewBag.Quote</p>
     <br />
+   
+        <script>
+            if(navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                        
+                    };
+                   
+                    //alert(pos.lat);
+                    //alert(pos.lng);
+                   
+                    //alert('Location found.');
+                    map.setCenter(pos);
+                }, function() {
+                    handleLocationError(true, infoWindow, map.getCenter());
+                });
+            }
+        </script>
+    
 
     @(
         Html.GoogleMap()
             .Name("map")
             .Height(500)
-            .Center(c => c.UseCurrentPosition())
+            .Center(c => c.UseCurrentPosition()) 
             .Zoom(12)
-            .Markers(m => m.Add().Title("Current Location"))
+            .Markers(m => m.Add().Title("Current Location"))       
     )
-
+   
+    
     <br />
     <br />
     <br />

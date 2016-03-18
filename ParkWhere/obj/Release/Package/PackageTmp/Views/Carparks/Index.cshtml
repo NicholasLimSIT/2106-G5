@@ -26,12 +26,45 @@
     </script>
     <span>Location:</span>
 
-    @using (Html.BeginForm("Index", "Carparks", FormMethod.Post))
+    @using (Html.BeginForm("Index", "Carparks", FormMethod.Get))
     {
         <input type="text" id="txtPlaces" style="width: 250px" placeholder="Enter a location" />
         <input type="hidden" name="addResults" id="addResults" style="width: 250px" />
         <input type="submit" value="Search" />
     }
+
+    @using (Html.BeginForm("Index", "Carparks", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <strong>Type of Parking</strong>
+        <div class="form-group">
+            <select class="form-control" name="value1">
+                <option>
+                    ELECTRONIC PARKING
+                </option>
+                <option>
+                    COUPON PARKING
+                </option>
+            </select>
+        </div>
+        <strong>CarPark Type</strong>
+        <div class="form-group">
+            <select class="form-control" name="value2">
+                <option>
+                    SURFACE CAR PARK
+                </option>
+                <option>
+                 MULTI-STOREY CAR PARK
+                </option>
+
+            </select>
+        </div>
+        <button type="submit" class="btn btn-default">
+            Submit
+        </button>
+
+    }
+   
 
 
     <table class="table">
@@ -103,6 +136,6 @@
         }
 
     </table>
-
+ 
 </div>
 
