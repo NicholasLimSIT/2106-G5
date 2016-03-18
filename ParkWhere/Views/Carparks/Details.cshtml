@@ -9,6 +9,7 @@
 
 <div>
     <h4>Carpark</h4>
+    @Html.ActionLink("Bookmark this carpark!", "../Bookmarks/Create", new { carparkId = Model.id, address = Model.address })
     <hr />
     <dl class="dl-horizontal">
         <dt>

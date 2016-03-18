@@ -15,11 +15,18 @@ namespace ParkWhere.Controllers
     {
         private ParkWhereDBEntities db = new ParkWhereDBEntities();
 
+        
+        [Authorize]
         // GET: Bookmarks/Create
-        public ActionResult Create()
+        public ActionResult Create(int carparkId, String address)
         {
-            ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo");
-            return View();
+            //ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo");
+            Bookmark bookmark = new Bookmark();
+            bookmark.username = User.Identity.Name;
+            bookmark.date = DateTime.Now;
+            bookmark.carparkId = carparkId;
+            //bookmark.address = address;
+            return View(bookmark);
         }
 
         // POST: Bookmarks/Create
@@ -27,7 +34,7 @@ namespace ParkWhere.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,carparkId,date,username")] Bookmark bookmark)
+        public ActionResult Create([Bind(Include = "carparkId,date,username")] Bookmark bookmark)
         {
             if (ModelState.IsValid)
             {
