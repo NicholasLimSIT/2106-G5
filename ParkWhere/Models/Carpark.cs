@@ -6,12 +6,12 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-namespace ParkWhere.Models
-{
-    using System;
-    using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
     
+namespace ParkWhere.Models
+{   
     public partial class Carpark
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,16 +22,34 @@ namespace ParkWhere.Models
         }
     
         public int id { get; set; }
+        
+        [Display(Name = "Carpark Code")]
         public string carparkNo { get; set; }
+        
+        [Display(Name = "Carpark Address")]
         public string address { get; set; }
         public double x_coord { get; set; }
         public double y_coord { get; set; }
+        
+        [Display(Name = "Carpark Type")]
         public string carparkType { get; set; }
+        
+        [Display(Name = "Type of Parking")]
         public string typeOfparking { get; set; }
+        
+        [Display(Name = "Short Term Parking")]
         public string shortTermparking { get; set; }
+        
+        [Display(Name = "Free Parking")]
         public string freeParking { get; set; }
+        
+        [Display(Name = "Night Parking")]
         public string nightParking { get; set; }
+        
+        [Display(Name = "Park & Ride Scheme")]
         public string parkAndrideScheme { get; set; }
+        
+        [Display(Name = "Adhoc Parking")]
         public string adhocParking { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
