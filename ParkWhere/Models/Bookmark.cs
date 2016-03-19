@@ -6,17 +6,24 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ParkWhere.Models
-{
-    using System;
-    using System.Collections.Generic;
-    
+{  
     public partial class Bookmark
     {
+        [Display(Name = "Bookmark ID")]
         public int BookmarkId { get; set; }
+        
+        [Display(Name = "Carpark Code")]
         public Nullable<int> carparkId { get; set; }
+        
+        [Display(Name = "Date")]
         public Nullable<System.DateTime> date { get; set; }
+        
+        [Display(Name = "Username")]
         public string username { get; set; }
     
         public virtual Carpark Carpark { get; set; }

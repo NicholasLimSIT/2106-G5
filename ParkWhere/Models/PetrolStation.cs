@@ -15,8 +15,13 @@ namespace ParkWhere.Models
     public partial class PetrolStation
     {
         public int Id { get; set; }
+        
+        [Display(Name = "Petrol Station Name")]
         public string petrolStationName { get; set; }
+        
+        [Display(Name = "Petrol Station Address")]
         public string address { get; set; }
+        
         public Nullable<double> latitude { get; set; }
         public Nullable<double> longitude { get; set; }
     }
