@@ -14,7 +14,7 @@ namespace ParkWhere.Models
     
     public partial class Bookmark
     {
-        public int Id { get; set; }
+        public int BookmarkId { get; set; }
         public Nullable<int> carparkId { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public string username { get; set; }
