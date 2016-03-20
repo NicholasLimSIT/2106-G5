@@ -24,7 +24,7 @@ namespace ParkWhere.Controllers
 
 
         // GET: General
-        public ActionResult Index(int? id)
+       virtual public ActionResult Index(int? id)
         {
             return View(dataGateway.SelectAll());
         }

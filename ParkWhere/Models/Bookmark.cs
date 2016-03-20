@@ -11,11 +11,15 @@ namespace ParkWhere.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Bookmark
     {
         public int BookmarkId { get; set; }
         public Nullable<int> carparkId { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-M-yyyy}")]
         public Nullable<System.DateTime> date { get; set; }
         public string username { get; set; }
     
