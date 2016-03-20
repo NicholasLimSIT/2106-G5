@@ -19,8 +19,8 @@ namespace ParkWhere.Models
         public Nullable<int> carparkId { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-M-yyyy}")]
-        public Nullable<System.DateTime> date { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        public DateTime date { get; set; }
         public string username { get; set; }
     
         public virtual Carpark Carpark { get; set; }

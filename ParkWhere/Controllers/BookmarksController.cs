@@ -66,7 +66,7 @@ namespace ParkWhere.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo", bookmark.carparkId);
+            //ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo", bookmark.carparkId);
             return View(bookmark);
         }
 
@@ -75,7 +75,7 @@ namespace ParkWhere.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,carparkId,date,username")] Bookmark bookmark)
+        public ActionResult Edit([Bind(Include = "BookmarkId,carparkId,date,username")] Bookmark bookmark)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace ParkWhere.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo", bookmark.carparkId);
+           // ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo", bookmark.carparkId);
             return View(bookmark);
         }
 
