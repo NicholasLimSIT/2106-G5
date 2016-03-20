@@ -6,17 +6,22 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ParkWhere.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class PetrolStation
     {
         public int Id { get; set; }
+        
+        [Display(Name = "Petrol Station Name")]
         public string petrolStationName { get; set; }
+        
+        [Display(Name = "Petrol Station Address")]
         public string address { get; set; }
+        
         public Nullable<double> latitude { get; set; }
         public Nullable<double> longitude { get; set; }
     }
