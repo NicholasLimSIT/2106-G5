@@ -4,7 +4,7 @@
     <EntitySetMapping Name="Bookmarks">
       <EntityTypeMapping TypeName="ParkWhereDBModel.Bookmark">
         <MappingFragment StoreEntitySet="Bookmarks">
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BookmarkId" ColumnName="BookmarkId" />
           <ScalarProperty Name="carparkId" ColumnName="carparkId" />
           <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="username" ColumnName="username" />

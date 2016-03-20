@@ -2,11 +2,11 @@
 <Schema Namespace="ParkWhereDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Bookmarks">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="BookmarkId" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookmarkId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="carparkId" Type="int" />
-    <Property Name="date" Type="datetime2" Precision="7" />
+    <Property Name="date" Type="datetime" />
     <Property Name="username" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Carparks">
@@ -46,7 +46,7 @@
     <Property Name="latitude" Type="float" />
     <Property Name="longitude" Type="float" />
   </EntityType>
-  <Association Name="FK__Bookmarks__carpa__49C3F6B7">
+  <Association Name="FK__Bookmarks__carpa__4E88ABD4">
     <End Role="Carparks" Type="Self.Carparks" Multiplicity="0..1" />
     <End Role="Bookmarks" Type="Self.Bookmarks" Multiplicity="*" />
     <ReferentialConstraint>
@@ -75,7 +75,7 @@
     <EntitySet Name="Carparks" EntityType="Self.Carparks" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ParkingHistory" EntityType="Self.ParkingHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PetrolStation" EntityType="Self.PetrolStation" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Bookmarks__carpa__49C3F6B7" Association="Self.FK__Bookmarks__carpa__49C3F6B7">
+    <AssociationSet Name="FK__Bookmarks__carpa__4E88ABD4" Association="Self.FK__Bookmarks__carpa__4E88ABD4">
       <End Role="Carparks" EntitySet="Carparks" />
       <End Role="Bookmarks" EntitySet="Bookmarks" />
     </AssociationSet>

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 
 using ParkWhere.Models;
+using ParkWhere.DAL;
 
 namespace ParkWhere.Controllers
 {

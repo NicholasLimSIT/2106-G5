@@ -8,12 +8,18 @@ using System.Web;
 using System.Web.Mvc;
 
 using ParkWhere.Models;
+using ParkWhere.DAL;
 
 namespace ParkWhere.Controllers
 {
     public class BookmarksController : GeneralController<Bookmark>
     {
         private ParkWhereDBEntities db = new ParkWhereDBEntities();
+
+        public BookmarksController()
+        {
+            dataGateway = new BookmarkGateway();
+        }
 
         
         [Authorize]
@@ -41,9 +47,10 @@ namespace ParkWhere.Controllers
                 db.Bookmarks.Add(bookmark);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+                
             }
 
-            ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo", bookmark.carparkId);
+            //ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo", bookmark.carparkId);
             return View(bookmark);
         }
 
@@ -59,7 +66,7 @@ namespace ParkWhere.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo", bookmark.carparkId);
+            //ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo", bookmark.carparkId);
             return View(bookmark);
         }
 
@@ -68,7 +75,7 @@ namespace ParkWhere.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,carparkId,date,username")] Bookmark bookmark)
+        public ActionResult Edit([Bind(Include = "BookmarkId,carparkId,date,username")] Bookmark bookmark)
         {
             if (ModelState.IsValid)
             {
@@ -76,7 +83,7 @@ namespace ParkWhere.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo", bookmark.carparkId);
+           // ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo", bookmark.carparkId);
             return View(bookmark);
         }
 
@@ -113,6 +120,23 @@ namespace ParkWhere.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [Authorize]
+        override public ActionResult Index(int? id)
+        {
+            if (User.IsInRole("Admin"))
+            {
+                return View(dataGateway.SelectAll());
+            }
+
+            else
+            {
+                var userBookmark = from j in dataGateway.SelectAll() select j;
+                userBookmark = userBookmark.Where(Bookmark => Bookmark.username == User.Identity.Name);
+                return View(userBookmark);
+            }
+
         }
     }
 }
