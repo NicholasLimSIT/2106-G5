@@ -14,10 +14,19 @@ namespace ParkWhere.Models
 {     
     public partial class ParkingHistory
     {
+        [Display(Name = "Parking History ID")]
         public int parkingHistoryId { get; set; }
+
+        [Display(Name = "Carpark ID")]
         public Nullable<int> carparkId { get; set; }
+
+        [Display(Name = "Username")]
         public string username { get; set; }
+
+        [Display(Name = "Parked Date")]
         public Nullable<System.DateTime> date { get; set; }
+
+        [Display(Name = "Description")]
         public string description { get; set; }
     
         public virtual Carpark Carpark { get; set; }

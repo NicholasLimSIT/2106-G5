@@ -17,7 +17,30 @@ namespace ParkWhere.DAL
         {
             this.data = db.Set<Carpark>();
         }
-                
+
+        public List<string[]> GetAllCarparks()
+        {
+            IEnumerable<Carpark> Carparks;
+            List<string[]> CarparkList;
+
+            Carparks = SelectAll();
+            CarparkList = new List<string[]>();
+
+            foreach (var item in Carparks)
+            {
+                string[] listString = new string[7];
+                listString[0] = item.id.ToString();
+                listString[1] = item.carparkNo;
+                listString[2] = item.address;
+                listString[3] = item.carparkType;
+                listString[4] = item.typeOfparking;
+                listString[5] = item.x_coord.ToString();
+                listString[6] = item.y_coord.ToString();
+                CarparkList.Add(listString);
+            }
+            return CarparkList;
+        }
+
         public IEnumerable<Carpark> searchCarpark(string address)
         {
             if (address== null)

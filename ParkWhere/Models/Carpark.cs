@@ -28,7 +28,11 @@ namespace ParkWhere.Models
         
         [Display(Name = "Carpark Address")]
         public string address { get; set; }
+
+        [Display(Name = "Latitude")]
         public double x_coord { get; set; }
+
+        [Display(Name = "Longitude")]
         public double y_coord { get; set; }
         
         [Display(Name = "Carpark Type")]

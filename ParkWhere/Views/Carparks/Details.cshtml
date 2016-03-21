@@ -138,9 +138,7 @@
                     '<li>Type of Parking: ' + parkingType + '</li>' +
                     '<li>Short Term Parking: ' + shortTermparking + '</li>' +
                     '<li>Night Parking: ' + nightParking + '</li>' +
-                    '<li>FOR TESTING ONLY</li>' +
                     '</ul>' +
-                    '<p>Click <a href="..">here</a> to bookmark carpark!</p>' +
                     '</div>' +
                     '</div>';
 
@@ -149,7 +147,7 @@
                 });
 
                 var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(1.3504, 103.8488),
+                    position: new google.maps.LatLng(@Url.Content(Model.x_coord.ToString()), @Url.Content(Model.y_coord.ToString())),
                     //position: new google.maps.LatLng(lat, lng),
                     title: "Junction 8 Carpark",
                 });
