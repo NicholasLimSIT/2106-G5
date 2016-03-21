@@ -3,108 +3,112 @@
 @{
     ViewBag.Title = "Details";
 }
+<div id="wellHomePage">
+    <br />
+    <br />
+    <br />
 
+    <h2>Details</h2>
 
-<h2>Details</h2>
+    <div>
+        <h4>Carpark</h4>
+        @Html.ActionLink("Bookmark this carpark!", "../Bookmarks/Create", new { carparkId = Model.id, address = Model.address })
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.carparkNo)
+            </dt>
 
-<div>
-    <h4>Carpark</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.carparkNo)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.carparkNo)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.carparkNo)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.address)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.address)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.address)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.address)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.x_coord)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.x_coord)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.x_coord)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.x_coord)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.y_coord)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.y_coord)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.y_coord)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.y_coord)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.carparkType)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.carparkType)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.carparkType)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.carparkType)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.typeOfparking)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.typeOfparking)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.typeOfparking)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.typeOfparking)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.shortTermparking)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.shortTermparking)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.shortTermparking)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.shortTermparking)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.freeParking)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.freeParking)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.freeParking)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.freeParking)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.nightParking)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.nightParking)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.nightParking)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.nightParking)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.parkAndrideScheme)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.parkAndrideScheme)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.parkAndrideScheme)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.parkAndrideScheme)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.adhocParking)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.adhocParking)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.adhocParking)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.adhocParking)
-        </dd>
-
-    </dl>
-</div>
+        </dl>
+    </div>
 
     <head>
-            <script src="http://maps.googleapis.com/maps/api/js"></script>
-            <script>
+        <script src="http://maps.googleapis.com/maps/api/js"></script>
+        <script>
 
             function initialize() {
 
@@ -158,14 +162,16 @@
             }
 
         google.maps.event.addDomListener(window, 'load', initialize);
-            </script>
-        </head>
+        </script>
+    </head>
 
-        <body>
-            <div id="googleMap" style="width:500px;height:380px;"></div>
-        </body>
+    <body>
+        <div id="googleMap" style="width:500px;height:380px;"></div>
+    </body>
 
-<p>
-    @*@Html.ActionLink("Edit", "Edit", new { id = Model.id }) |*@
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    <p>
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.id }) |*@
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+</div>
