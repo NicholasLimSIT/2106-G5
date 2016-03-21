@@ -42,13 +42,8 @@ namespace ParkWhere.Services
             }
             catch (WebException we)
             {
-                // If weather not found or error exception
-                Stream receiveStream = we.Response.GetResponseStream();
-                StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
-                System.Diagnostics.Debug.WriteLine("Error Encountered - ");
-                System.Diagnostics.Debug.WriteLine(readStream.ReadToEnd());
-
-                weatherForecast = "Weather Area not found. Forecast cannot be retrived.";
+                //Run code if failed to retrieve weather forecast
+                weatherForecast = "My current location: " + location + ". Error accessing NEA API. Forecast cannot be retrived.";
             }
 
             return weatherForecast;

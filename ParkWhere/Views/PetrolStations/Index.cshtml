@@ -1,28 +1,70 @@
 ﻿@model IEnumerable<ParkWhere.Models.PetrolStation>
-@using Jmelosegui.Mvc.GoogleMap
+
 @{
     ViewBag.Title = "Index";
 }
-@section scripts
-    {
-    @(Html.GoogleMap().ScriptRegistrar())
-}
-
 
 <h2>Index</h2>
 
-@(
-                Html.GoogleMap()
-                    .Name("map")
-                    .Height(500)
-                    .Center(c => c.UseCurrentPosition())
-                    .Zoom(12)
-                    
+<script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
 
+@section scripts {
 
-    )
+    <section class="scripts">
+        <script type="text/javascript">
+        var map = new google.maps.Map(document.getElementById('map_canvas'), {
+            zoom: 11,
+            center: new google.maps.LatLng(1.3485232,103.8208814),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
 
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
 
+                infoWindow.setPosition(pos);
+                infoWindow.setContent('Location found.');
+                map.setCenter(pos);
+            }, function() {
+                handleLocationError(true, infoWindow, map.getCenter());
+            });
+        } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
+        }
+        
+
+        var infowindow = new google.maps.InfoWindow();
+        var marker, i;
+
+        var locations = @Html.Raw(Json.Encode(ViewBag.List));
+
+            if(locations!=null)
+            {
+                for (i = 0; i < locations.length; i++) {
+                    marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                        map: map
+                    });
+                    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                        return function() {
+                            infowindow.setContent("@Html.DisplayNameFor(model => model.petrolStationName) :<br />" + locations[i][0] + "<br />" + '<a href="/PetrolStations/Details/' + locations[i][3] + '">Click here for Details</a>');
+                            infowindow.open(map, marker);
+                        }
+                    })(marker, i));
+                }
+            }
+        </script>
+    </section>
+}
+
+<div>
+    <div id="map_canvas" style="height: 450px;"></div>
+</div>
 
 
 <div id="wellHomePage">
@@ -50,9 +92,7 @@
                     @Html.DisplayFor(modelItem => item.address)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
                 </td>
             </tr>
         }
