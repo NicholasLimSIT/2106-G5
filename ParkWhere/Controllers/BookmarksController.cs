@@ -31,7 +31,7 @@ namespace ParkWhere.Controllers
             bookmark.username = User.Identity.Name;
             bookmark.date = DateTime.Now;
             bookmark.carparkId = carparkId;
-            //bookmark.address = address;
+            ViewBag.address = address;
             return View(bookmark);
         }
 
@@ -55,7 +55,7 @@ namespace ParkWhere.Controllers
         }
 
         // GET: Bookmarks/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, String carparkaddress)
         {
             if (id == null)
             {
@@ -67,6 +67,7 @@ namespace ParkWhere.Controllers
                 return HttpNotFound();
             }
             //ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo", bookmark.carparkId);
+            ViewBag.address = carparkaddress;
             return View(bookmark);
         }
 

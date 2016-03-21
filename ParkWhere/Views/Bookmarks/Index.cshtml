@@ -40,7 +40,7 @@
                     @Html.DisplayFor(modelItem => item.Carpark.carparkNo)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.BookmarkId }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.BookmarkId, carparkaddress = item.Carpark.address  }) |
                     @Html.ActionLink("Details", "Details", new { id = item.BookmarkId }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.BookmarkId })
                 </td>
