@@ -17,5 +17,13 @@ namespace ParkWhere.Controllers
         {
             dataGateway = new PetrolStationGateway();
         }
+
+        public override ActionResult Index(int? id)
+        {
+            PetrolStationGateway ps = new PetrolStationGateway();
+            ViewBag.List = ps.GetAllPetrolStation();
+
+            return View(dataGateway.SelectAll());
+        }
     } 
 }
