@@ -8,11 +8,11 @@
     <br />
     <br />
     <br />
-    <h2>Index</h2>
-
-    <p>
+    <h2>Bookmark Index</h2>
+    <!--    <p>
         @Html.ActionLink("Create New", "Create")
-    </p>
+    </p>-->
+
     <table class="table">
         <tr>
             <th>
@@ -23,6 +23,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Carpark.carparkNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Carpark.address)
             </th>
             <th></th>
         </tr>
@@ -39,9 +42,12 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Carpark.carparkNo)
                 </td>
+                <td>@Html.DisplayFor(modelItem => item.Carpark.address)</td>
+
+
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.BookmarkId, carparkaddress = item.Carpark.address  }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.BookmarkId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.BookmarkId,carparkaddress = item.Carpark.address }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.BookmarkId })
                 </td>
             </tr>

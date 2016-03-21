@@ -31,7 +31,7 @@
         <div class="form-group">
             @Html.Label("address", htmlAttributes: new { @class = "control-label col-md-2", @value = ViewBag.address })
             <div class="col-md-10">
-                @Html.TextBox("Address", (String)ViewBag.address, new { @readonly = "readonly"})
+                @Html.TextBox("Address", (String)ViewBag.address, new { @readonly = "readonly", @class="form-control"})
 
             </div>
         </div>
