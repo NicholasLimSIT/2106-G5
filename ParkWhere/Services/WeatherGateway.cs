@@ -13,7 +13,7 @@ namespace ParkWhere.Services
         public string GetCurrentWeather(string location)
         {
             string weatherForecast = "";
-            string dataset = "nowcast";
+            string dataset = "2hr_nowcast";
             string keyref = "781CF461BB6606AD4AF8F309C0CCE994AC81FD9664F88220";         // Developer Key to use API
             
             // URL Connection to NEA Dataset API
@@ -42,13 +42,7 @@ namespace ParkWhere.Services
             }
             catch (WebException we)
             {
-                // If weather not found or error exception
-                Stream receiveStream = we.Response.GetResponseStream();
-                StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8);
-                System.Diagnostics.Debug.WriteLine("Error Encountered - ");
-                System.Diagnostics.Debug.WriteLine(readStream.ReadToEnd());
-
-                weatherForecast = "Weather Area not found. Forecast cannot be retrived.";
+                weatherForecast = "My current location: " + location + ". Error accessing NEA API. Forecast cannot be retrived.";
             }
 
             return weatherForecast;
