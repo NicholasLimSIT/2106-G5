@@ -18,6 +18,7 @@
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
 
+
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
@@ -26,8 +27,12 @@
                     lng: position.coords.longitude
                 };
 
-                infoWindow.setPosition(pos);
-                infoWindow.setContent('Location found.');
+                var marker = new google.maps.Marker({
+                    position: pos,
+                    map: map,
+                    title: 'Your current location!',
+                    icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+                });
                 map.setCenter(pos);
             }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());
@@ -36,28 +41,26 @@
             // Browser doesn't support Geolocation
             handleLocationError(false, infoWindow, map.getCenter());
         }
-        
 
         var infowindow = new google.maps.InfoWindow();
         var marker, i;
-
         var locations = @Html.Raw(Json.Encode(ViewBag.List));
 
-            if(locations!=null)
-            {
-                for (i = 0; i < locations.length; i++) {
-                    marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                        map: map
-                    });
-                    google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                        return function() {
-                            infowindow.setContent("@Html.DisplayNameFor(model => model.petrolStationName) :<br />" + locations[i][0] + "<br />" + '<a href="/PetrolStations/Details/' + locations[i][3] + '">Click here for Details</a>');
-                            infowindow.open(map, marker);
-                        }
-                    })(marker, i));
-                }
+        if(locations!=null)
+        {
+            for (i = 0; i < locations.length; i++) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                    map: map
+                });
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                        infowindow.setContent("@Html.DisplayNameFor(model => model.petrolStationName) :<br />" + locations[i][0] + "<br />" + '<a href="/PetrolStations/Details/' + locations[i][3] + '">Click here for Details</a>');
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
             }
+        }
         </script>
     </section>
 }
@@ -68,9 +71,6 @@
 
 
 <div id="wellHomePage">
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
     <table class="table">
         <tr>
             <th>
