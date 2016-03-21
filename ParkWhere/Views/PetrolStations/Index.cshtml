@@ -18,6 +18,26 @@
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
 
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+
+                infoWindow.setPosition(pos);
+                infoWindow.setContent('Location found.');
+                map.setCenter(pos);
+            }, function() {
+                handleLocationError(true, infoWindow, map.getCenter());
+            });
+        } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
+        }
+        
+
         var infowindow = new google.maps.InfoWindow();
         var marker, i;
 
@@ -30,7 +50,6 @@
                         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
                         map: map
                     });
-
                     google.maps.event.addListener(marker, 'click', (function(marker, i) {
                         return function() {
                             infowindow.setContent("@Html.DisplayNameFor(model => model.petrolStationName) :<br />" + locations[i][0] + "<br />" + '<a href="/PetrolStations/Details/' + locations[i][3] + '">Click here for Details</a>');
