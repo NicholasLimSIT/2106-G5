@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using ParkWhere.DAL;
 using ParkWhere.Models;
+using System.Net;
 
 namespace ParkWhere.Controllers
 {
@@ -20,10 +14,17 @@ namespace ParkWhere.Controllers
 
         public override ActionResult Index(int? id)
         {
-            PetrolStationGateway ps = new PetrolStationGateway();
-            ViewBag.List = ps.GetAllPetrolStation();
-
-            return View(dataGateway.SelectAll());
+            ViewBag.List = ((PetrolStationGateway)dataGateway).GetAllPetrolStation();
+            return View();
         }
-    } 
+        [HttpPost]
+        public ActionResult Index(string addResults)
+        {
+
+            ViewBag.List = ((PetrolStationGateway)dataGateway).searchPetrolStation(addResults);
+            return View();
+        }
+        
+
+    }
 }

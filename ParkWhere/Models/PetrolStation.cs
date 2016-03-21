@@ -22,7 +22,7 @@ namespace ParkWhere.Models
         [Display(Name = "Petrol Station Address")]
         public string address { get; set; }
         
-        public Nullable<double> latitude { get; set; }
-        public Nullable<double> longitude { get; set; }
+        public double latitude { get; set; }
+        public double longitude { get; set; }
     }
 }

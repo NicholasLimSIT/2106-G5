@@ -64,38 +64,38 @@
         </script>
     </section>
 }
+@*autocomplete scripts*@
 
-<div>
-    <div id="map_canvas" style="height: 450px;"></div>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+<script type="text/javascript">
+        google.maps.event.addDomListener(window, 'load', function () {
+            var places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
+            google.maps.event.addListener(places, 'place_changed', function () {
+                var place = places.getPlace();
+                var address = place.formatted_address;
+                var latitude = place.geometry.location.lat();
+                var longitude = place.geometry.location.lng();
+                var mesg = "Address: " + address;
+                mesg += "\nLatitude: " + latitude;
+                mesg += "\nLongitude: " + longitude;
+                document.getElementById("addResults").value = address;
+            });
+        });
+</script>
+
+
+
+<div class="well" id="wellHomePage">
+    <span>Location:</span>
+    @using (Html.BeginForm("Index", "PetrolStations", FormMethod.Post))
+    {
+        <input type="text" id="txtPlaces" style="width: 250px" placeholder="Enter a location" />
+        <input type="hidden" name="addResults" id="addResults" style="width: 250px" />
+        <input type="submit" value="Search" />
+    }
+    <div>
+        <div id="map_canvas" style="height: 450px;"></div>
+    </div>
 </div>
 
 
-<div id="wellHomePage">
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.petrolStationName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.address)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.petrolStationName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.address)
-                </td>
-                <td>
-                    @Html.ActionLink("Details", "Details", new { id = item.Id })
-                </td>
-            </tr>
-        }
-
-    </table>
-</div>
