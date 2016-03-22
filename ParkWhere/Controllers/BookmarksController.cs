@@ -55,7 +55,7 @@ namespace ParkWhere.Controllers
         }
 
         // GET: Bookmarks/Edit/5
-        public ActionResult Edit(int? id, String carparkaddress)
+        public ActionResult Edit(int? id, String address)
         {
             if (id == null)
             {
@@ -67,7 +67,7 @@ namespace ParkWhere.Controllers
                 return HttpNotFound();
             }
             //ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo", bookmark.carparkId);
-            ViewBag.address = carparkaddress;
+            ViewBag.address = address;
             return View(bookmark);
         }
 

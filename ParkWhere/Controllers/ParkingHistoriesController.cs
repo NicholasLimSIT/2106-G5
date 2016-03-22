@@ -16,20 +16,42 @@ namespace ParkWhere.Controllers
     {
         private ParkWhereDBEntities db = new ParkWhereDBEntities();
 
-        // GET: ParkingHistories
-        public ActionResult Index()
+        public ParkingHistoriesController()
         {
-            var parkingHistories = db.ParkingHistories.Include(p => p.Carpark);
-            return View(parkingHistories.ToList());
+            dataGateway = new ParkingHistoryGateway();
+        }
+
+        [Authorize]
+        // GET: ParkingHistories
+        override public ActionResult Index(int? id)
+        {
+
+            if (User.IsInRole("Admin"))
+            {
+                return View(dataGateway.SelectAll());
+            }
+
+            else
+            {
+                var userParkingHistory = from j in dataGateway.SelectAll() select j ;
+                userParkingHistory = userParkingHistory.Where(ParkingHistory => ParkingHistory.username == User.Identity.Name);
+                return View(userParkingHistory.OrderByDescending(ParkingHistory => ParkingHistory.date));
+            }
+            //var parkingHistories = db.ParkingHistories.Include(p => p.Carpark);
+            //return View(parkingHistories.ToList());
         }
 
         
 
         // GET: ParkingHistories/Create
-        public ActionResult Create()
+        public ActionResult Create(int carparkId, String address)
         {
-            ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo");
-            return View();
+            ParkingHistory parkinghistory = new ParkingHistory();
+            //ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo");
+            ViewBag.address = address;
+            parkinghistory.username = User.Identity.Name;
+            parkinghistory.date = DateTime.Now;
+            return View(parkinghistory);
         }
 
         // POST: ParkingHistories/Create
@@ -51,7 +73,7 @@ namespace ParkWhere.Controllers
         }
 
         // GET: ParkingHistories/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, String address)
         {
             if (id == null)
             {
@@ -62,7 +84,8 @@ namespace ParkWhere.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo", parkingHistory.carparkId);
+            //ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo", parkingHistory.carparkId);
+            ViewBag.address = address;
             return View(parkingHistory);
         }
 

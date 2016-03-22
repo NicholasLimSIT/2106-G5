@@ -3,49 +3,53 @@
 @{
     ViewBag.Title = "Index";
 }
+<div id="wellHomePage">
+    <br />
+    <br />
+    <br />
+    <h2>Parking History Index</h2>
 
-<h2>Index</h2>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Carpark.carparkNo)
+            </th>
+            <th></th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Carpark.carparkNo)
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Carpark.carparkNo)
+                </td>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Carpark.carparkNo)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.parkingHistoryId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.parkingHistoryId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.parkingHistoryId })
-        </td>
-    </tr>
-}
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.parkingHistoryId , address = item.Carpark.address}) |
+                    @Html.ActionLink("Details", "Details", new { id = item.parkingHistoryId, address = item.Carpark.address }) 
+                   
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+
+</div>
