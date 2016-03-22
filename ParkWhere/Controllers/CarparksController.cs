@@ -20,7 +20,7 @@ namespace ParkWhere.Controllers
         public override ActionResult Index(int? id)
         {
             ViewBag.List = (((CarparkGateway)dataGateway).GetAllCarparks());
-            return View();
+            return View(dataGateway.SelectAll());
         }
 
         [HttpPost]

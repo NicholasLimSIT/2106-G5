@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ParkWhere.Models
-{     
+{
     public partial class ParkingHistory
     {
         [Display(Name = "Parking History ID")]
@@ -23,12 +23,15 @@ namespace ParkWhere.Models
         [Display(Name = "Username")]
         public string username { get; set; }
 
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [Display(Name = "Parked Date")]
-        public Nullable<System.DateTime> date { get; set; }
+        public DateTime date { get; set; }
 
         [Display(Name = "Description")]
         public string description { get; set; }
-    
+
         public virtual Carpark Carpark { get; set; }
     }
 }
