@@ -35,13 +35,13 @@ namespace ParkWhere.Controllers
                 return View(((CarparkGateway)dataGateway).FilterAddressByType(searchResult, value1, value2));
             }
         }
-            
-        //[HttpGet]
-        //public ActionResult Index(string addResults)
-        //{
-        //    Session["searchResult"] = addResults;
-        //    return View(((CarparkGateway)dataGateway).searchCarpark(addResults));
-        //}
+
+        [HttpGet]
+        public ActionResult Index(string addResults)
+        {
+            Session["searchResult"] = addResults;
+            return View(((CarparkGateway)dataGateway).searchCarpark(addResults));
+        }
 
     }
         

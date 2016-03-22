@@ -1,4 +1,6 @@
 ﻿@model ParkWhere.Models.PetrolStation
+@using Jmelosegui.Mvc.GoogleMap
+
 
 @{
     ViewBag.Title = "Details";
@@ -19,16 +21,69 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.address)
+            @Html.DisplayNameFor(model => model.latitude)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.address)
+            @Html.DisplayFor(model => model.longitude)
         </dd>
 
     </dl>
+
+    @{
+        List<double> CoordinatesX = new List<double>();
+        List<double> CoordinatesY = new List<double>();
+
+    }
+    <script>
+            if(navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+
+                    };
+                    CoordinatesX.Add( pos.lat);
+                    CoordinatesY.Add(pos.lng);
+
+                    //alert('Location found.');
+                    map.setCenter(pos);
+                }, function() {
+                    handleLocationError(true, infoWindow, map.getCenter());
+                });
+            }
+    </script>
+
+    @{CoordinatesX.Add(Model.latitude); }
+    @{CoordinatesY.Add(Model.longitude); }
+
+
+
+
+
+    @section scripts
+    {
+        @(Html.GoogleMap().ScriptRegistrar())
+    }
+    @(
+ Html.GoogleMap()
+
+        .Name("map")
+        .Height(500)
+        .Center(c => c.UseCurrentPosition())
+        .Zoom(3)
+
+        .Polylines(pf => pf.Add()
+                        .Points(ptn =>
+                        {
+                            ptn.Add(CoordinatesX[0], CoordinatesY[0]);
+                            ptn.Add(1.3983, 103.909);
+                        })
+
+                        .StrokeColor(System.Drawing.Color.DarkBlue)
+                  )
+    )
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
