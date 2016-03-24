@@ -29,7 +29,7 @@ namespace ParkWhere.Controllers
             return View(dataGateway.SelectAll());
         }
       
-        public ActionResult Details(int? id)
+       virtual public ActionResult Details(int? id)
         {
             if (id == null)
             {
