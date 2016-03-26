@@ -20,7 +20,7 @@ namespace ParkWhere.Controllers
         public override ActionResult Index(int? id)
         {
             ViewBag.List = (((CarparkGateway)dataGateway).GetAllCarparks());
-            return View(dataGateway.SelectAll());
+            return View();
         }
 
         [HttpPost]
@@ -28,11 +28,13 @@ namespace ParkWhere.Controllers
         {
             if (Session["searchResult"] == null)
             {
-                return View(((CarparkGateway)dataGateway).FilterByType(value1, value2));
+                ViewBag.List = ((CarparkGateway)dataGateway).FilterByType(value1, value2);
+                return View();
             }
             else {
                 string searchResult = Session["searchResult"].ToString();
-                return View(((CarparkGateway)dataGateway).FilterAddressByType(searchResult, value1, value2));
+                ViewBag.List = ((CarparkGateway)dataGateway).FilterAddressByType(searchResult, value1, value2);
+                return View();
             }
         }
 
@@ -40,9 +42,10 @@ namespace ParkWhere.Controllers
         public ActionResult Index(string addResults)
         {
             Session["searchResult"] = addResults;
-            return View(((CarparkGateway)dataGateway).searchCarpark(addResults));
+            ViewBag.List = ((CarparkGateway)dataGateway).searchCarpark(addResults);
+            return View();
         }
 
     }
-        
+
 }

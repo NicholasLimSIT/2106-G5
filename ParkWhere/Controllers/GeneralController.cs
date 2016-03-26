@@ -17,14 +17,13 @@ namespace ParkWhere.Controllers
         internal IDataGateway<T> dataGateway;
         internal GeneralController()
         {
-            
            
         }
         
 
 
         // GET: General
-       virtual public ActionResult Index(int? id)
+        virtual public ActionResult Index(int? id)
         {
             return View(dataGateway.SelectAll());
         }

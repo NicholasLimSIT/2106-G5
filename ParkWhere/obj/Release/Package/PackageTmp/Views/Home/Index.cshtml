@@ -15,7 +15,8 @@
     <h2>Welcome to ParkWhere ! </h2>
     <h3>The weather today: </h3>
 
-    <p>@ViewBag.Quote</p>
+    <p>@ViewBag.Weather </p>
+    <p> @ViewBag.Curr</p>
     <br />
    
         <script>
@@ -26,7 +27,9 @@
                         lng: position.coords.longitude
                         
                     };
-                   
+                    
+                    
+                
                     //alert(pos.lat);
                     //alert(pos.lng);
                    

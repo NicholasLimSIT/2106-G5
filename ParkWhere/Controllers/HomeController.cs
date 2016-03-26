@@ -16,7 +16,7 @@ namespace ParkWhere.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Quote = weatherGateway.GetCurrentWeather("ANG MO KIO");
+            ViewBag.Weather = weatherGateway.GetCurrentWeather("ANG MO KIO");
             return View();
         }
 

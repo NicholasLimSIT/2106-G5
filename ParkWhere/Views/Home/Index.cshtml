@@ -15,7 +15,8 @@
     <h2>Welcome to ParkWhere ! </h2>
     <h3>The weather today: </h3>
 
-    <p>@ViewBag.Quote</p>
+    <p>@ViewBag.Weather </p>
+  
     <br />
    
         <script>
@@ -26,14 +27,18 @@
                         lng: position.coords.longitude
                         
                     };
-                   
+                    
+                    
+                    alert("fde");
+                    '<%:TempData["issucess"]%>' = pos.lat;
+                    var message = '<%:TempData["issucess"]%>';
+
+                    alert(message);
                     //alert(pos.lat);
-                    //alert(pos.lng);
+                    alert(pos.lng);
                    
                     //alert('Location found.');
                     map.setCenter(pos);
-                }, function() {
-                    handleLocationError(true, infoWindow, map.getCenter());
                 });
             }
         </script>
