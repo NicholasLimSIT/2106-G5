@@ -17,11 +17,11 @@ namespace ParkWhere.Controllers
             dataGateway = new CarparkGateway();
         }
 
-        public override ActionResult Index(int? id)
-        {
-            ViewBag.List = (((CarparkGateway)dataGateway).GetAllCarparks());
-            return View();
-        }
+        //public override ActionResult Index(int? id)
+        //{
+        //    ViewBag.List = (((CarparkGateway)dataGateway).GetAllCarparks());
+        //    return View();
+        //}
 
         [HttpPost]
         public ActionResult Index(string value1, string value2)

@@ -19,7 +19,11 @@ namespace ParkWhere.Controllers
         {
            
         }
-        
+        public ActionResult currentlat(float coordinates)
+        {
+            ViewData.Model = coordinates;
+            return View();
+        }
 
 
         // GET: General
