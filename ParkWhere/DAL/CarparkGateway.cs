@@ -10,7 +10,6 @@ namespace ParkWhere.DAL
 {
     public class CarparkGateway : DataGateway<Carpark>
     {
-       
         IEnumerable<Carpark> Carparks;
 
         public CarparkGateway()
@@ -137,6 +136,14 @@ namespace ParkWhere.DAL
             }
             return CarparkList;
 
+        }
+
+        public IEnumerable<Carpark> GetTopFiveBookmarks()
+        {
+            Carparks = data.SqlQuery("SELECT * FROM Carparks C WHERE ( C.id IN ("
+                + "SELECT TOP(5) B.carparkId FROM Bookmarks B GROUP BY B.carparkId ORDER BY COUNT(*) DESC)"
+                + ")").ToList();
+            return Carparks;
         }
     }
 }

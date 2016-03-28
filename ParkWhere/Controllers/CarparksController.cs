@@ -13,8 +13,12 @@ namespace ParkWhere.Controllers
 {
     public class CarparksController : GeneralController<Carpark>
     {
+        //To store top five bookmarked carparks
+        IEnumerable<Carpark> TopFiveCarparks;
+
         public CarparksController() {
             dataGateway = new CarparkGateway();
+            TopFiveCarparks = ((CarparkGateway)dataGateway).GetTopFiveBookmarks();
         }
 
         //public override ActionResult Index(int? id)
@@ -29,12 +33,12 @@ namespace ParkWhere.Controllers
             if (Session["searchResult"] == null)
             {
                 ViewBag.List = ((CarparkGateway)dataGateway).FilterByType(value1, value2);
-                return View();
+                return View(TopFiveCarparks);
             }
             else {
                 string searchResult = Session["searchResult"].ToString();
                 ViewBag.List = ((CarparkGateway)dataGateway).FilterAddressByType(searchResult, value1, value2);
-                return View();
+                return View(TopFiveCarparks);
             }
         }
 
@@ -43,7 +47,7 @@ namespace ParkWhere.Controllers
         {
             Session["searchResult"] = addResults;
             ViewBag.List = ((CarparkGateway)dataGateway).searchCarpark(addResults);
-            return View();
+            return View(TopFiveCarparks);
         }
 
     }
