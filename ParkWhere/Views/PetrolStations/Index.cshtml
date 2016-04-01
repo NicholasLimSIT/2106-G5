@@ -56,7 +56,7 @@
                         });
                         google.maps.event.addListener(marker, 'click', (function(marker, i) {
                             return function() {
-                                infowindow.setContent("@Html.DisplayNameFor(model => model.petrolStationName) :<br />" + locations[i][0] + "<br />" + '<a href="/PetrolStations/Details/' + locations[i][3] + '">Click here for Details</a>');
+                                infowindow.setContent("PetrolStation Name :<br />" + locations[i][0] + "<br />" + '<a href="/PetrolStations/Details/' + locations[i][3] + '">Click here for Details</a>');
                                 infowindow.open(map, marker);
                             }
                         })(marker, i));

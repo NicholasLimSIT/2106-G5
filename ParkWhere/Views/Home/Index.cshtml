@@ -28,14 +28,16 @@
                         
                     };
                     var lat = pos.lat
-                    
-                    
-               
-                    //alert(pos.lat);
-                    //alert(pos.lng);
-                   
-                    //alert('Location found.');
-                    map.setCenter(pos);
+                    var lng = pos.lng
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.onreadystatechange = function () {
+                        if (xmlHttp.readyState == 4 && xmlHttp.status == 200);
+                           
+                    }
+                    //xmlHttp.open("GET", "http://localhost:51999/Home/SaveViewBag?Lat=" + lat + "&Lng=" + lng, false);
+                    xmlHttp.open("GET", "http://parkwhere.azurewebsites.net/Home/SaveViewBag?Lat=" + lat + "&Lng=" + lng, false);
+                    xmlHttp.send(null);
+                        map.setCenter(pos);
                 });
             }
         </script>

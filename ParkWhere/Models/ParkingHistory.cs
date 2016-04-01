@@ -6,32 +6,18 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ParkWhere.Models
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class ParkingHistory
     {
-        [Display(Name = "Parking History ID")]
         public int parkingHistoryId { get; set; }
-
-        [Display(Name = "Carpark ID")]
         public Nullable<int> carparkId { get; set; }
-
-        [Display(Name = "Username")]
         public string username { get; set; }
-
-
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
-        [Display(Name = "Parked Date")]
-        public DateTime date { get; set; }
-
-        [Display(Name = "Description")]
+        public Nullable<System.DateTime> date { get; set; }
         public string description { get; set; }
-
-        public virtual Carpark Carpark { get; set; }
     }
 }

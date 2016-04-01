@@ -21,12 +21,6 @@ namespace ParkWhere.Controllers
             TopFiveCarparks = ((CarparkGateway)dataGateway).GetTopFiveBookmarks();
         }
 
-        //public override ActionResult Index(int? id)
-        //{
-        //    ViewBag.List = (((CarparkGateway)dataGateway).GetAllCarparks());
-        //    return View();
-        //}
-
         [HttpPost]
         public ActionResult Index(string value1, string value2)
         {
@@ -48,6 +42,29 @@ namespace ParkWhere.Controllers
             Session["searchResult"] = addResults;
             ViewBag.List = ((CarparkGateway)dataGateway).searchCarpark(addResults);
             return View(TopFiveCarparks);
+        }
+        public override ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Carpark obj = dataGateway.SelectById(id);
+            if (obj == null)
+            {
+                return HttpNotFound();
+            }
+            List<string[]> CarparkList;
+            CarparkList = new List<string[]>();
+            string[] listString = new string[2];
+            listString[0] = obj.x_coord.ToString();
+            listString[1] = obj.y_coord.ToString();
+            CarparkList.Add(listString);
+            ViewBag.Corr = CarparkList;
+            ViewBag.CurrentCor = HomeController.CurrentCorrList;
+
+            Carpark carpark = dataGateway.SelectById(id);
+            return View(carpark);
         }
 
     }

@@ -2,11 +2,13 @@
 
 @{
     ViewBag.Title = "Index";
+    
 }
 @Styles.Render("~/Content/css")
 
 <div class="well" id="wellHomePage">
     <h2>Search</h2>
+    <p>@ViewBag.Lat</p>
     <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
 
     @section scripts {
@@ -57,7 +59,7 @@
 
                     google.maps.event.addListener(marker, 'click', (function(marker, i) {
                         return function() {
-                            infowindow.setContent("@Html.DisplayNameFor(model => model.carparkNo) :<br />" + locations[i][1] + "<br />" + '<a href="/Carparks/Details/' + locations[i][0] + '">Carpark Details</a>');
+                            infowindow.setContent("Carpark Address :<br />" + locations[i][2] + "<br />" + '<a href="/Carparks/Details/' + locations[i][0] + '">Carpark Details</a>');
                             infowindow.open(map, marker);
                         }
                     })(marker, i));

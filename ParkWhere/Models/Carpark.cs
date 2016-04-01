@@ -6,59 +6,25 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-    
+
 namespace ParkWhere.Models
-{   
+{
+    using System;
+    using System.Collections.Generic;
+    
     public partial class Carpark
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Carpark()
-        {
-            this.Bookmarks = new HashSet<Bookmark>();
-            this.ParkingHistories = new HashSet<ParkingHistory>();
-        }
-    
         public int id { get; set; }
-        
-        [Display(Name = "Carpark Code")]
         public string carparkNo { get; set; }
-        
-        [Display(Name = "Carpark Address")]
         public string address { get; set; }
-
-        [Display(Name = "Latitude")]
         public double x_coord { get; set; }
-
-        [Display(Name = "Longitude")]
         public double y_coord { get; set; }
-        
-        [Display(Name = "Carpark Type")]
         public string carparkType { get; set; }
-        
-        [Display(Name = "Type of Parking")]
         public string typeOfparking { get; set; }
-        
-        [Display(Name = "Short Term Parking")]
         public string shortTermparking { get; set; }
-        
-        [Display(Name = "Free Parking")]
         public string freeParking { get; set; }
-        
-        [Display(Name = "Night Parking")]
         public string nightParking { get; set; }
-        
-        [Display(Name = "Park & Ride Scheme")]
         public string parkAndrideScheme { get; set; }
-        
-        [Display(Name = "Adhoc Parking")]
         public string adhocParking { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bookmark> Bookmarks { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ParkingHistory> ParkingHistories { get; set; }
     }
 }

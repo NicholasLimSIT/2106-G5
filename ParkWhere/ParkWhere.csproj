@@ -181,6 +181,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ParkingHistoriesController.cs" />
+    <Compile Include="Controllers\ParkWhereContext.cs" />
     <Compile Include="Controllers\PetrolStationsController.cs" />
     <Compile Include="DAL\BookmarkGateway.cs" />
     <Compile Include="DAL\CarparkGateway.cs" />
@@ -194,10 +195,25 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>ParkWhereContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>ParkWhereContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>ParkWhereContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>ParkWhereContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Bookmark.cs">
       <DependentUpon>ParkWhereContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Carpark.cs">
+      <DependentUpon>ParkWhereContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>ParkWhereContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />

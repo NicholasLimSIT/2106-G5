@@ -43,6 +43,7 @@ namespace ParkWhere.Controllers
             listString[1] = obj.longitude.ToString();
             PetrolStationList.Add(listString);
             ViewBag.Corr = PetrolStationList;
+            ViewBag.CurrentCor = HomeController.CurrentCorrList;
             return View();
         }
 

@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-
 using ParkWhere.Models;
 using ParkWhere.DAL;
 
@@ -26,7 +23,7 @@ namespace ParkWhere.Controllers
         // GET: Bookmarks/Create
         public ActionResult Create(int carparkId, String address)
         {
-            //ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo");
+            
             Bookmark bookmark = new Bookmark();
             bookmark.username = User.Identity.Name;
             bookmark.date = DateTime.Now;
@@ -49,8 +46,7 @@ namespace ParkWhere.Controllers
                 return RedirectToAction("Index");
                 
             }
-
-            //ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo", bookmark.carparkId);
+       
             return View(bookmark);
         }
 
@@ -83,8 +79,7 @@ namespace ParkWhere.Controllers
                 db.Entry(bookmark).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
-           // ViewBag.carparkId = new SelectList(db.Carparks, "id", "carparkNo", bookmark.carparkId);
+            }        
             return View(bookmark);
         }
 
